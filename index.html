@@ -462,29 +462,13 @@ nav.scrolled .socials a:nth-child(2){
 }
 
 .hidden-gallery{
-  display:grid;
+  display:none;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
-
-  max-height:0;
-  overflow:hidden;
 }
 
 .hidden-gallery.active{
-  max-height:3000px;
-}
-
-.hidden-gallery .gallery-item{
-  opacity:0;
-  transform:translateY(30px);
-  transition:
-    opacity .5s ease,
-    transform .5s ease;
-}
-
-.hidden-gallery.active .gallery-item{
-  opacity:1;
-  transform:translateY(0);
+  display:contents;
 }
 
 .show-more{
@@ -916,12 +900,6 @@ footer{
 
   .gallery{
   padding-top:70px;
-}
-
-  .salon h3{
-  font-size:3.5rem;
-  line-height:.9;
-  margin-bottom:60px;
 }
 
   .salon-grid img{

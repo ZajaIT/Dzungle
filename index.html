@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Dětský svět Džungle</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+:root{
+  --green:#7abf18;
+  --green-dark:#1d3a16;
+  --yellow:#ffd21f;
+  --orange:#ff8f1f;
+  --red:#ff4e45;
+  --light:#fffdf6;
+  --black:#101010;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#fffef8;
+  color:#111;
+  font-family:'Montserrat',sans-serif;
+  overflow-x:hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--green), var(--yellow));
+  border-radius: 999px;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+section{
+  position:relative;
+  scroll-margin-top:60px;
+}
+
+.container{
+  width:min(1400px,92%);
+  margin:auto;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:9999;
+  padding:10px 0;
+  transition:.4s;
+}
+
+nav.scrolled{
+  background:rgba(10,10,10,.88);
+  backdrop-filter:blur(12px);
+}
+
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:30px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  text-decoration:none;
+}
+
+.logo img{
+  width:120px;
+}
+
+.logo span{
+  font-family:'Baloo 2',cursive;
+  color:white;
+  font-size:1.2rem;
+  font-weight:700;
+  line-height:1;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:40px;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  color:white;
+  text-decoration:none;
+  font-size:.95rem;
+  font-weight:700;
+  position:relative;
+  letter-spacing:.5px;
+}
+
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0%;
+  height:2px;
+  background:var(--yellow);
+  transition:.3s;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.socials{
+  display:flex;
+  gap:14px;
+}
+
+.socials a{
+  color:white;
+  font-size:1.2rem;
+  text-decoration:none;
+  transition:.3s;
+}
+
+nav.scrolled .socials a:nth-child(1){
+  color:#1877f2;
+}
+
+nav.scrolled .socials a:nth-child(2){
+  color:#e1306c;
+}
+
+.socials a:hover{
+  transform:translateY(-4px) rotate(-8deg);
+}
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:28px;
+  height:3px;
+  background:white;
+  transition:.3s;
+}
+
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  background:#111;
+  z-index:999;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  transform:translateX(100%);
+  transition:.4s;
+}
+
+.mobile-menu.active{
+  transform:translateX(0);
+}
+
+.mobile-menu a{
+  color:white;
+  text-decoration:none;
+  font-size:2rem;
+  font-family:'Baloo 2',cursive;
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  background:
+  linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.45)),
+  url('hernicka.jpg') center/cover;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  width:600px;
+  height:600px;
+  background:radial-gradient(circle,var(--yellow),transparent 70%);
+  opacity:.15;
+  top:-200px;
+  right:-100px;
+  animation:float 8s infinite ease-in-out;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  margin-top:100px;
+}
+
+.hero-small{
+  font-family:'Baloo 2',cursive;
+  color:white;
+  font-size:3rem;
+  transform:rotate(-3deg);
+}
+
+.hero h1{
+  font-family:'Baloo 2',cursive;
+  font-size:9rem;
+  line-height:.8;
+  color:var(--yellow);
+  text-transform:uppercase;
+  text-shadow:0 8px 20px rgba(0,0,0,.3);
+  margin:20px 0;
+}
+
+.hero p{
+  color:white;
+  font-size:1.3rem;
+  max-width:700px;
+  line-height:1.7;
+  font-weight:500;
+}
+
+.hero-location{
+  margin-top:25px;
+  color:white;
+  font-size:1.05rem;
+  font-weight:600;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+
+.hero-badge{
+  margin-top:40px;
+  display:inline-block;
+  background:var(--green);
+  color:white;
+  padding:18px 24px;
+  font-weight:700;
+  font-size:1rem;
+  transform:rotate(-3deg);
+  text-decoration:none;
+  transition:.3s;
+}
+
+.hero-badge:hover{
+  background:var(--yellow);
+  color:var(--green-dark);
+  transform:rotate(-3deg) translateY(-4px);
+}
+
+.leaf{
+  position:absolute;
+  width:220px;
+  opacity:.9;
+  z-index:2;
+}
+
+.leaf1{
+  left:-40px;
+  bottom:-40px;
+  transform:rotate(-10deg);
+}
+
+.leaf2{
+  right:-40px;
+  top:120px;
+  transform:rotate(20deg);
+}
+
+/* ABOUT */
+
+.about{
+  padding:140px 0;
+  overflow:hidden;
+}
+
+.section-title{
+  font-family:'Baloo 2',cursive;
+  font-size:5rem;
+  line-height:.9;
+  margin-bottom:60px;
+  color:var(--green);
+}
+
+.about-layout{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:80px;
+  align-items:start;
+}
+
+.about-text{
+  font-size:.98rem;
+  line-height:1.65;
+}
+
+.about-text p{
+  margin-bottom:18px;
+}
+
+.about-text strong{
+  font-weight:700;
+  color:var(--green-dark);
+}
+
+.about-images{
+  position:relative;
+  min-height:700px;
+}
+
+.about-images img{
+  position:absolute;
+  object-fit:cover;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+
+.about-images img:nth-child(1){
+  width:340px;
+  top:0;
+  left:0;
+  transform:rotate(-5deg);
+}
+
+.about-images img:nth-child(2){
+  width:300px;
+  right:0;
+  top:180px;
+  transform:rotate(6deg);
+}
+
+.about-images img:nth-child(3){
+  width:320px;
+  left:60px;
+  bottom:0;
+  transform:rotate(-8deg);
+}
+
+/* SERVICES */
+
+.services{
+  padding:120px 0;
+  background:
+  linear-gradient(rgba(255,255,255,.95),rgba(255,255,255,.95)),
+  url('zviratka.jpg') center/cover fixed;
+}
+
+.services-wrap{
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  justify-content:center;
+}
+
+.service{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+
+  font-family:'Baloo 2',cursive;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--green-dark);
+  position:relative;
+  text-align:center;
+}
+
+.service img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  transition:.3s;
+}
+
+.service:hover img{
+  transform:translateY(-6px) scale(1.08);
+}
+
+
+/* GALLERY */
+
+.gallery-title{
+  text-align:center;
+}
+
+.gallery{
+  padding:120px 0 70px;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.gallery-item{
+  cursor:pointer;
+  position:relative;
+}
+
+.gallery-item img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.gallery-item:hover img{
+  transform:scale(1.05) rotate(1deg);
+}
+
+.hidden-gallery{
+  display:none;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.hidden-gallery.active{
+  display:contents;
+}
+
+.show-more{
+  margin:60px auto 0;
+  display:block;
+  border:none;
+
+  background:var(--green);
+  color:white;
+
+  padding:20px 40px;
+  font-weight:700;
+  cursor:pointer;
+  font-size:1rem;
+
+  transition:.3s;
+}
+
+.show-more:hover{
+  background:var(--yellow);
+  color:var(--green-dark);
+
+  transform:translateY(-4px);
+}
+
+/* SALONKY */
+
+.salons{
+  padding:80px 0 20px;
+  background:#f8f7f0;
+}
+
+.salon{
+  margin-bottom:180px;
+  position:relative;
+}
+
+.salon h3{
+  font-family:'Baloo 2',cursive;
+  font-size:4rem;
+  margin-bottom:50px;
+  text-align:center;
+  margin-top:0;
+}
+
+.panda{
+  margin-top:-100px;
+}
+
+.panda h3{
+  color:var(--green);
+}
+
+.princezny h3{
+  color:#cf4db8;
+}
+
+.salon-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.salon-grid img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.salon-grid img:hover{
+  transform:scale(1.05) rotate(1deg);
+}
+
+/* OSLAVY */
+
+.parties{
+  padding:90px 0 140px;
+  background:white;
+  overflow:hidden;
+}
+
+.parties .section-title{
+  text-align:center;
+  margin-bottom:25px;
+  color:var(--yellow);
+}
+
+.party-subtitle{
+  max-width:900px;
+  margin:0 auto 70px;
+  text-align:center;
+  font-size:.98rem;
+  line-height:1.65;
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  color:#111;
+}
+
+.party-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  align-items:start;
+}
+
+.party-gallery-title{
+  font-family:'Baloo 2',cursive;
+  font-size:3rem;
+  text-align:center;
+  color:var(--green);
+  margin:70px 0 40px;
+  line-height:1;
+}
+
+.party-gallery img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+}
+
+.menu-section{
+  padding:140px 0;
+  background:#f8f7f0;
+}
+
+.menu-section .section-title{
+  text-align:center;
+  color:var(--orange);
+}
+
+/* MENU FLIPBOOK */
+
+.menu-section{
+  padding:90px 0 140px;
+  background:#f8f7f0;
+  overflow:hidden;
+}
+
+.menu-section .section-title{
+  text-align:center;
+  color:var(--orange);
+  margin-bottom:20px;
+}
+
+.menu-subtitle{
+  text-align:center;
+  font-size:1rem;
+  line-height:1.7;
+  max-width:700px;
+  margin:0 auto 60px;
+}
+
+/* REAL BOOK */
+
+.book-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:30px;
+  position:relative;
+}
+
+.flipbook{
+  width:760px;
+  max-width:100%;
+  height:auto;
+  overflow:hidden;
+  border-radius:0;
+  box-shadow:0 25px 60px rgba(0,0,0,.15);
+  background:white;
+}
+
+.book-track{
+  display:flex;
+  transition:transform .6s ease;
+}
+
+.spread{
+  min-width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+}
+
+.spread img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.spread img:first-child{
+  border-right:1px solid rgba(0,0,0,.08);
+}
+
+.flip-btn{
+  width:58px;
+  height:58px;
+  border:none;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  cursor:pointer;
+  font-size:1.1rem;
+  transition:.3s;
+  flex-shrink:0;
+}
+
+.flip-btn:hover{
+  background:var(--yellow);
+  color:var(--green-dark);
+  transform:translateY(-4px);
+}
+
+
+/* BUTTONS */
+
+.flip-btn{
+  width:64px;
+  height:64px;
+  border:none;
+  border-radius:50%;
+  background:var(--green);
+  color:white;
+  font-size:1.2rem;
+  cursor:pointer;
+  transition:.3s;
+  z-index:999;
+}
+
+.flip-btn:hover{
+  background:var(--yellow);
+  color:var(--green-dark);
+  transform:translateY(-4px);
+}
+
+/* CONTACT */
+
+.contact{
+  padding:140px 0 0;
+  background:#111;
+  color:white;
+}
+
+.contact-top{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  margin-bottom:80px;
+}
+
+.contact h2{
+  font-family:'Baloo 2',cursive;
+  font-size:5rem;
+  margin-bottom:40px;
+  color:var(--yellow);
+}
+
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:25px;
+  font-size:1.1rem;
+}
+
+.address-line{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.address-line i{
+  margin-top:4px;
+  color:#ff5a52;
+}
+
+.address-line i,
+.contact-link i{
+  color:#ff3b30;
+}
+
+.contact-link{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.contact-info a{
+  color:white;
+  text-decoration:none;
+}
+
+.opening{
+  margin-top:40px;
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--yellow);
+}
+
+.payments{
+  margin-top:50px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.payments span{
+  font-family:'Baloo 2',cursive;
+  font-size:1.4rem;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+iframe{
+  width:100%;
+  height:500px;
+  border:none;
+  filter:grayscale(.2);
+}
+
+footer{
+  padding:40px 0;
+  text-align:center;
+
+  background:var(--green);
+  color:white;
+}
+
+/* REVEAL */
+
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+  transition:1s;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+
+@keyframes float{
+  50%{
+    transform:translateY(40px);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .nav-links,
+  .socials{
+    display:none;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+
+  .logo img{
+    width:90px;
+  }
+
+  .hero{
+    padding:120px 0 80px;
+  }
+
+  .hero-small{
+    font-size:1.5rem;
+  }
+
+  .hero h1{
+    font-size:4.6rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+.hero-content{
+  transform:translateY(-30px);
+}
+
+  .section-title{
+    font-size:3.5rem;
+  }
+
+  .about-layout,
+  .party-layout,
+  .contact-top{
+    grid-template-columns:1fr;
+  }
+
+  .about-images{
+    min-height:auto;
+    display:grid;
+    gap:20px;
+  }
+
+  .about-images img{
+    position:relative !important;
+    width:100% !important;
+    inset:auto !important;
+    transform:none !important;
+  }
+
+  .salon-grid{
+    grid-template-columns:1fr;
+  }
+
+  .salon-grid img{
+    transform:none !important;
+  }
+
+.party-gallery-title{
+  font-size:2.2rem;
+}
+
+  .party-text h2{
+    font-size:4rem;
+  }
+
+.menu-section{
+    padding:100px 0;
+  }
+
+.book-wrap{
+  gap:12px;
+}
+
+.flipbook{
+  width:100%;
+}
+
+.spread img:first-child{
+  border-right:none;
+}
+
+  .contact h2{
+    font-size:3.5rem;
+  }
+
+  .service{
+    font-size:1.4rem;
+  }
+
+  .gallery-grid{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.gallery-item.large,
+.gallery-item.vertical,
+.gallery-item.horizontal{
+  grid-column:auto;
+  grid-row:auto;
+}
+
+  .hidden-gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+.party-gallery{
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+
+  .party-gallery img{
+    height:auto;
+    border-radius:22px;
+  }
+
+  .party-subtitle{
+    font-size:1rem;
+    line-height:1.7;
+    margin-bottom:40px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home">Domů</a>
+  <a href="#about">O nás</a>
+  <a href="#gallery">Galerie</a>
+  <a href="#salons">Salonky</a>
+  <a href="#parties">Oslavy</a>
+  <a href="#menu">Meníčko</a>
+  <a href="#contact">Kontakt</a>
+</div>
+
+<nav id="navbar">
+  <div class="container nav-inner">
+
+    <a href="#" class="logo">
+      <img src="logo.png" alt="">
+    </a>
+
+    <div class="nav-right">
+
+      <div class="nav-links">
+        <a href="#home">Domů</a>
+        <a href="#about">O nás</a>
+        <a href="#gallery">Galerie</a>
+        <a href="#salons">Salonky</a>
+        <a href="#parties">Oslavy</a>
+        <a href="#menu">Meníčko</a>
+        <a href="#contact">Kontakt</a>
+      </div>
+
+      <div class="socials">
+  <a href="https://www.facebook.com/groups/1916478768851504" target="_blank">
+    <i class="fa-brands fa-facebook"></i>
+  </a>
+
+  <a href="https://www.instagram.com/_detskysvetdzungle_/" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+</div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero" id="home">
+
+  <div class="container hero-content reveal">
+
+    <div class="hero-small">
+      Vítejte v našem Dětském světě
+    </div>
+
+    <h1>DŽUNGLE</h1>
+
+    <p>
+      místo, kde si děti hrají a radost nemá hranice!
+    </p>
+
+    <div class="hero-location">
+  Hernička v oslnivém stylu džungle v Jindřichově Hradci
+</div>
+
+    <a href="#contact" class="hero-badge">
+  Přijďte se vyřádit!
+</a>
+
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+
+    <h2 class="section-title reveal">
+  Pohádkový svět
+</h2>
+
+    <div class="about-layout">
+
+      <div class="about-text reveal">
+
+<p><strong>Dětský svět Džungle - hernička s kavárnou</strong></p>
+
+<p>Nacházíme se v malebném městě Jindřichův Hradec. Můžete se těšit na širokou nabídku aktivit pro děti. Naše interiérové hřiště je vybaveno míčkovým bazénkem a třemi velkými skluzavkami, ale také menší skluzavkou pro začátečníky. Pro malé <strong>princezny a rytíře</strong> máme připravený speciální salonek, kde si mohou vyzkoušet šaty pro princezny nebo rytířské kostýmy.</p>
+
+<p>V našem <strong>salónku Panda</strong> najdete spoustu zábavy – dřevěnou kuchyňku, ponk, obchůdek a další hrací prvky, které rozvíjejí kreativitu a zručnost. Pro nejmenší návštěvníky máme k dispozici bezpečnou, uzavřenou ohrádku, kde si mohou hrát.</p>
+
+<p>K pohodové atmosféře přispívá i káva od <strong>Ladislava Koláře - KOLDA CAFFEE</strong>, jehož osobitý příběh si můžete vychutnat přímo u nás.</p>
+
+<p>Kromě kvalitní kávy nabízíme také široký výběr dezertů, palačinek, zmrzliny, pizzy, párků v rohlíku a mnoho dalších chutných dobrot.</p>
+
+<p>Přijďte k nám zažít příjemně strávený čas s Vašimi dětmi a užít si zábavu v bezpečném prostředí.</p>
+
+<p>Pořádáme také narozeninové oslavu pro děti! Ty probíhají v našem <strong>Panda salonku</strong>, který je pro Vás uzavřený, ale zároveň přímo propojený s hernou, takže si děti během oslavy mohou užívat všechny herní prvky, které nabízíme.</p>
+
+      </div>
+
+      <div class="about-images reveal">
+        <img src="galerie1.jpg" alt="">
+        <img src="galerie2.jpg" alt="">
+        <img src="galerie5.jpg" alt="">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+
+    <div class="services-wrap reveal">
+
+  <div class="service">
+    <img src="bezbarierove.png" alt="">
+    <span>Bezbariérové</span>
+  </div>
+
+  <div class="service">
+    <img src="klimatizace.png" alt="">
+    <span>Klimatizace</span>
+  </div>
+
+  <div class="service">
+    <img src="venkovniposezeni.png" alt="">
+    <span>Zahrádka</span>
+  </div>
+
+  <div class="service">
+    <img src="parkoviste.png" alt="">
+    <span>Parkoviště</span>
+  </div>
+
+  <div class="service">
+    <img src="soukromeakce.png" alt="">
+    <span>Oslavy</span>
+  </div>
+
+  <div class="service">
+    <img src="wifizdarma.png" alt="">
+    <span>Wifi zdarma</span>
+  </div>
+
+</div>
+</section>
+
+<section class="gallery" id="gallery">
+
+  <div class="container">
+
+    <h2 class="section-title gallery-title reveal">
+  Takhle to u nás vypadá
+</h2>
+
+    <div class="gallery-grid reveal">
+
+  <div class="gallery-item">
+    <img src="galerie1.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie2.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie3.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie4.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie5.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie6.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie7.jpg" alt="">
+  </div>
+
+  <div class="gallery-item">
+    <img src="galerie8.jpg" alt="">
+  </div>
+
+  <div class="hidden-gallery" id="moreGallery">
+
+    <div class="gallery-item">
+      <img src="galerie9.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie10.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie11.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie12.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie13.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie14.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie15.jpg" alt="">
+    </div>
+
+    <div class="gallery-item">
+      <img src="galerie16.jpg" alt="">
+    </div>
+
+  </div>
+
+</div>
+
+    <button class="show-more" id="galleryToggle">
+      Zobrazit více
+    </button>
+
+  </div>
+
+</section>
+
+<section class="salons" id="salons">
+
+  <div class="container">
+
+    <div class="salon princezny reveal">
+
+      <h3>Salonek princezen a rytířů</h3>
+
+      <div class="salon-grid">
+        <img src="salonek1.jpg" alt="">
+        <img src="salonek2.jpg" alt="">
+        <img src="salonek3.jpg" alt="">
+        <img src="salonek4.jpg" alt="">
+      </div>
+
+    </div>
+
+    <div class="salon panda reveal">
+
+      <h3>Salonek Panda</h3>
+
+      <div class="salon-grid">
+        <img src="panda1.jpg" alt="">
+        <img src="panda3.jpg" alt="">
+        <img src="panda4.jpg" alt="">
+        <img src="panda5.jpg" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="parties" id="parties">
+
+  <div class="container">
+
+    <h2 class="section-title reveal">
+      Oslavy
+    </h2>
+
+    <p class="party-subtitle reveal">
+      Pokud hledáte ideální místo pro narozeninovou oslavu Vaší ratolesti,
+      Dětský svět Džungle je tou pravou volbou.
+    </p>
+
+    <div class="party-gallery reveal">
+
+      <img src="salonek.png" alt="Pronájem salonku">
+
+      <img src="pravidla.png" alt="Pravidla narozeninových oslav">
+
+      <img src="celaherna.png" alt="Pronájem celé herny">
+
+    </div>
+
+<h3 class="party-gallery-title reveal">
+  Pojďte oslavovat
+</h3>
+
+<div class="salon-grid reveal" style="margin-top:40px;">
+
+  <img src="oslava1.jpeg" alt="">
+  <img src="oslava2.jpeg" alt="">
+  <img src="oslava3.jpeg" alt="">
+  <img src="oslava4.jpeg" alt="">
+
+</div>
+
+  </div>
+
+</section>
+
+<section class="menu-section" id="menu">
+
+  <div class="container">
+
+    <h2 class="section-title reveal">
+      Meníčko
+    </h2>
+
+    <p class="menu-subtitle reveal">
+      Prolistujte si naše džunglové menu.
+    </p>
+
+    <div class="flipbook-wrapper reveal">
+
+      <div class="book-wrap">
+
+  <button class="flip-btn prev-btn">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+
+  <div class="flipbook">
+
+    <div class="book-track" id="bookTrack">
+
+      <div class="spread">
+        <img src="1..png" alt="">
+        <img src="2..png" alt="">
+      </div>
+
+      <div class="spread">
+        <img src="3..png" alt="">
+        <img src="4..png" alt="">
+      </div>
+
+      <div class="spread">
+        <img src="5..png" alt="">
+        <img src="6..png" alt="">
+      </div>
+
+      <div class="spread">
+        <img src="7..png" alt="">
+        <img src="8..png" alt="">
+      </div>
+
+      <div class="spread">
+        <img src="9..png" alt="">
+        <img src="10..png" alt="">
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="flip-btn next-btn">
+    <i class="fa-solid fa-chevron-right"></i>
+  </button>
+
+</div>
+
+<div class="flip-dots"></div>
+
+  </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+  <div class="container">
+
+    <div class="contact-top">
+
+      <div class="reveal">
+
+        <h2>Kontakt</h2>
+
+        <div class="contact-info">
+
+          <div class="address-line">
+  <i class="fa-solid fa-location-dot"></i>
+
+  <div>
+    sídl. Vajgar 649/377 01<br>
+    377 01 Jindřichův Hradec III<br>
+  </div>
+</div>
+
+          <a href="tel:+420603534788" class="contact-link">
+  <i class="fa-solid fa-phone"></i>
+  +420 603 534 788
+</a>
+
+          <a href="mailto:detskysvetdzungle@email.cz">
+            ✉️ detskysvetdzungle@email.cz
+          </a>
+
+          <div class="opening">
+            Po - Ne: 9:00 - 18:00
+          </div>
+
+          <div class="payments">
+
+  <span>
+    <i class="fa-solid fa-money-bill-wave"></i>
+    Hotovost
+  </span>
+
+  <span>
+    <i class="fa-solid fa-wifi"></i>
+    Bezkontaktní platby
+  </span>
+
+  <span>
+    <i class="fa-regular fa-credit-card"></i>
+    Platební karta
+  </span>
+
+</div>
+
+        </div>
+
+      </div>
+
+      <div class="reveal">
+
+        <iframe
+          src="https://maps.google.com/maps?q=Jindřichův%20Hradec%20Vajgar%20649&t=&z=15&ie=UTF8&iwloc=&output=embed">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © Dětský svět Džungle
+  </footer>
+
+</section>
+
+<script>
+
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+});
+
+/* MOBILE MENU */
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+
+document.querySelectorAll('.mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+  });
+});
+
+/* REVEAL */
+
+const reveals = document.querySelectorAll('.reveal');
+
+const revealOnScroll = () => {
+
+  reveals.forEach(el => {
+
+    const windowHeight = window.innerHeight;
+    const top = el.getBoundingClientRect().top;
+
+    if(top < windowHeight - 100){
+      el.classList.add('active');
+    }
+
+  });
+
+};
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+/* GALLERY */
+
+const galleryToggle = document.getElementById('galleryToggle');
+const moreGallery = document.getElementById('moreGallery');
+
+let opened = false;
+
+galleryToggle.addEventListener('click', () => {
+
+  opened = !opened;
+
+  if(opened){
+
+    moreGallery.classList.add('active');
+    galleryToggle.innerText = 'Zobrazit méně';
+
+  }else{
+
+    moreGallery.classList.remove('active');
+    galleryToggle.innerText = 'Zobrazit více';
+
+    document.getElementById('gallery').scrollIntoView({
+      behavior:'smooth'
+    });
+
+  }
+
+});
+
+/* REAL FLIPBOOK */
+
+const track = document.getElementById('bookTrack');
+const spreads = document.querySelectorAll('.spread');
+
+const nextBtn = document.querySelector('.next-btn');
+const prevBtn = document.querySelector('.prev-btn');
+
+let currentSpread = 0;
+
+function updateBook(){
+
+  track.style.transform =
+    `translateX(-${currentSpread * 100}%)`;
+
+  prevBtn.style.opacity =
+    currentSpread === 0 ? '.4' : '1';
+
+  nextBtn.style.opacity =
+    currentSpread === spreads.length - 1 ? '.4' : '1';
+
+  const currentImages =
+    spreads[currentSpread].querySelectorAll('img');
+
+  let maxHeight = 0;
+
+  currentImages.forEach(img => {
+
+    if(img.complete){
+
+      maxHeight = Math.max(maxHeight, img.offsetHeight);
+
+    }
+
+  });
+
+  document.querySelector('.flipbook').style.height =
+    maxHeight + 'px';
+
+}
+
+nextBtn.addEventListener('click', ()=>{
+
+  if(currentSpread < spreads.length - 1){
+    currentSpread++;
+    updateBook();
+  }
+
+});
+
+prevBtn.addEventListener('click', ()=>{
+
+  if(currentSpread > 0){
+    currentSpread--;
+    updateBook();
+  }
+
+});
+
+updateBook();
+
+window.addEventListener('load', updateBook);
+window.addEventListener('resize', updateBook);
+
+
+
+</script>
+
+</body>
+</html>

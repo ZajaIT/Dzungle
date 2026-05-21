@@ -929,9 +929,19 @@ footer{
   }
 
 .book-wrap{
-  display:grid;
-  grid-template-columns:auto auto;
-  justify-content:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.flipbook{
+  width:100vw;
+  max-width:100vw;
+}
+
+.buttons-row{
+  display:flex;
   gap:14px;
 }
 
@@ -957,20 +967,39 @@ footer{
   border-right:none;
 }
 
+/* MOBIL MENU ŠIPKY */
+
+.book-wrap{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center;
+  gap:16px;
+}
+
+.flipbook{
+  width:100vw;
+  max-width:100vw;
+}
+
+.buttons-row{
+  display:flex;
+  gap:14px;
+  margin-top:14px;
+}
+
 .flip-btn{
   width:44px;
   height:44px;
   font-size:.9rem;
-}
-  .prev-btn,
-.next-btn{
-  position:static;
-}
 
-.book-wrap .flip-btn{
   display:inline-flex;
   align-items:center;
   justify-content:center;
+}
+
+.prev-btn,
+.next-btn{
+  position:static;
 }
 
   .contact h2{
@@ -1384,9 +1413,17 @@ footer{
 
   </div>
 
+  <div class="buttons-row">
+
+  <button class="flip-btn prev-btn">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+
   <button class="flip-btn next-btn">
     <i class="fa-solid fa-chevron-right"></i>
   </button>
+
+</div>
 
 </div>
 

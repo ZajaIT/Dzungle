@@ -1041,6 +1041,16 @@ footer{
   .menu-subtitle{
   margin-bottom:20px;
 }
+  .buttons-row{
+    display:flex;
+    gap:14px;
+    margin-top:14px;
+  }
+
+  .book-wrap > .prev-btn,
+  .book-wrap > .next-btn{
+    display:none;
+  }
 
 }
 
@@ -1377,6 +1387,10 @@ footer{
 
       <div class="book-wrap">
 
+  <button class="flip-btn prev-btn desktop-btn">
+    <i class="fa-solid fa-chevron-left"></i>
+  </button>
+
   <div class="flipbook">
 
     <div class="book-track" id="bookTrack">
@@ -1410,7 +1424,11 @@ footer{
 
   </div>
 
-  <div class="buttons-row">
+<button class="flip-btn next-btn desktop-btn">
+  <i class="fa-solid fa-chevron-right"></i>
+</button>
+
+<div class="buttons-row">
 
   <button class="flip-btn prev-btn">
     <i class="fa-solid fa-chevron-left"></i>

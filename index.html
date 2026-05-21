@@ -933,7 +933,19 @@ footer{
 }
 
 .flipbook{
+  width:calc(100vw - 40px);
+}
+  .book-wrap{
+  align-items:center;
+}
+
+.spread{
+  min-width:100%;
+}
+
+.spread img{
   width:100%;
+  height:auto;
 }
 
 .spread img:first-child{
@@ -1583,31 +1595,6 @@ updateBook();
 
 window.addEventListener('load', updateBook);
 window.addEventListener('resize', updateBook);
-
-  if(window.innerWidth <= 768){
-
-  const spreads = document.querySelectorAll('.spread');
-
-  spreads.forEach(spread => {
-
-    const images = spread.querySelectorAll('img');
-
-    images.forEach(img => {
-
-      const newSpread = document.createElement('div');
-      newSpread.classList.add('spread');
-
-      newSpread.appendChild(img.cloneNode(true));
-
-      track.appendChild(newSpread);
-
-    });
-
-    spread.remove();
-
-  });
-
-}
 
 
 </script>

@@ -1604,8 +1604,8 @@ galleryToggle.addEventListener('click', () => {
 const track = document.getElementById('bookTrack');
 const spreads = document.querySelectorAll('.spread');
 
-const nextBtn = document.querySelector('.next-btn');
-const prevBtn = document.querySelector('.prev-btn');
+const nextBtns = document.querySelectorAll('.next-btn');
+const prevBtns = document.querySelectorAll('.prev-btn');
 
 let currentSpread = 0;
 
@@ -1614,11 +1614,15 @@ function updateBook(){
   track.style.transform =
   `translateX(-${currentSpread * 100}%)`;
 
-  prevBtn.style.opacity =
+  prevBtns.forEach(btn => {
+  btn.style.opacity =
     currentSpread === 0 ? '.4' : '1';
+});
 
-  nextBtn.style.opacity =
+nextBtns.forEach(btn => {
+  btn.style.opacity =
     currentSpread === spreads.length - 1 ? '.4' : '1';
+});
 
   const currentImages =
   spreads[currentSpread].querySelectorAll('img');
@@ -1640,21 +1644,29 @@ function updateBook(){
 
 }
 
-nextBtn.addEventListener('click', ()=>{
+nextBtns.forEach(btn => {
 
-  if(currentSpread < spreads.length - 1){
-    currentSpread++;
-    updateBook();
-  }
+  btn.addEventListener('click', ()=>{
+
+    if(currentSpread < spreads.length - 1){
+      currentSpread++;
+      updateBook();
+    }
+
+  });
 
 });
 
-prevBtn.addEventListener('click', ()=>{
+prevBtns.forEach(btn => {
 
-  if(currentSpread > 0){
-    currentSpread--;
-    updateBook();
-  }
+  btn.addEventListener('click', ()=>{
+
+    if(currentSpread > 0){
+      currentSpread--;
+      updateBook();
+    }
+
+  });
 
 });
 

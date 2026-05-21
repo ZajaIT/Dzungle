@@ -1533,6 +1533,8 @@ galleryToggle.addEventListener('click', () => {
 const track = document.getElementById('bookTrack');
 const spreads = document.querySelectorAll('.spread');
 
+const isMobile = window.innerWidth <= 768;
+
 const nextBtn = document.querySelector('.next-btn');
 const prevBtn = document.querySelector('.prev-btn');
 
@@ -1540,8 +1542,17 @@ let currentSpread = 0;
 
 function updateBook(){
 
+  if(isMobile){
+
+  track.style.transform =
+    `translateX(-${currentSpread * 50}%)`;
+
+}else{
+
   track.style.transform =
     `translateX(-${currentSpread * 100}%)`;
+
+}
 
   prevBtn.style.opacity =
     currentSpread === 0 ? '.4' : '1';
@@ -1549,8 +1560,12 @@ function updateBook(){
   nextBtn.style.opacity =
     currentSpread === spreads.length - 1 ? '.4' : '1';
 
-  const currentImages =
-    spreads[currentSpread].querySelectorAll('img');
+  const spreadIndex = isMobile
+  ? Math.floor(currentSpread / 2)
+  : currentSpread;
+
+const currentImages =
+  spreads[spreadIndex].querySelectorAll('img');
 
   let maxHeight = 0;
 
@@ -1571,7 +1586,7 @@ function updateBook(){
 
 nextBtn.addEventListener('click', ()=>{
 
-  if(currentSpread < spreads.length - 1){
+  if(currentSpread < (isMobile ? spreads.length * 2 - 1 : spreads.length - 1)){
     currentSpread++;
     updateBook();
   }

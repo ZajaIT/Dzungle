@@ -462,13 +462,22 @@ nav.scrolled .socials a:nth-child(2){
 }
 
 .hidden-gallery{
-  display:none;
+  display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:20px;
+
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+
+  transition:
+    max-height .8s ease,
+    opacity .5s ease;
 }
 
 .hidden-gallery.active{
-  display:contents;
+  max-height:2000px;
+  opacity:1;
 }
 
 .show-more{

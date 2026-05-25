@@ -717,20 +717,19 @@ nav.scrolled .socials a:nth-child(2){
 
 .garden-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
 }
 
 .garden-grid img{
   width:100%;
   aspect-ratio:1/1;
   object-fit:cover;
-  box-shadow:0 20px 50px rgba(0,0,0,.12);
-  transition:.4s;
+  transition:.5s;
 }
 
 .garden-grid img:hover{
-  transform:scale(1.03) rotate(1deg);
+  transform:scale(1.05) rotate(1deg);
 }
 
 /* CONTACT */
@@ -1083,6 +1082,10 @@ footer{
 
   .garden-grid{
     grid-template-columns:1fr;
+  }
+
+  .garden-grid img{
+    transform:none !important;
   }
 
 }

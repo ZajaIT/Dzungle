@@ -544,6 +544,17 @@ nav.scrolled .socials a:nth-child(2){
   transform:scale(1.05) rotate(1deg);
 }
 
+  .salon-grid video{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  transition:.5s;
+}
+
+.salon-grid video:hover{
+  transform:scale(1.05) rotate(1deg);
+}
+
 /* OSLAVY */
 
 .parties{
@@ -1394,10 +1405,21 @@ footer{
 
 <div class="salon-grid reveal" style="margin-top:40px;">
 
-  <img src="oslava1.jpeg" alt="">
-  <img src="oslava2.jpeg" alt="">
-  <img src="oslava3.jpeg" alt="">
-  <img src="oslava4.jpeg" alt="">
+  <video autoplay muted loop playsinline>
+    <source src="unicorn.mp4" type="video/mp4">
+  </video>
+
+  <video autoplay muted loop playsinline>
+    <source src="minecraft.mp4" type="video/mp4">
+  </video>
+
+  <video autoplay muted loop playsinline>
+    <source src="astronom.mp4" type="video/mp4">
+  </video>
+
+  <video autoplay muted loop playsinline>
+    <source src="harrypotter.mp4" type="video/mp4">
+  </video>
 
 </div>
 

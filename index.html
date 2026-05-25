@@ -1770,6 +1770,24 @@ updateBook();
 window.addEventListener('load', updateBook);
 window.addEventListener('resize', updateBook);
 
+  const videos = document.querySelectorAll('.video-grid video');
+
+videos.forEach(video => {
+
+  video.addEventListener('play', () => {
+
+    videos.forEach(otherVideo => {
+
+      if(otherVideo !== video){
+        otherVideo.pause();
+      }
+
+    });
+
+  });
+
+});
+
 
 </script>
 

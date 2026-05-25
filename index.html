@@ -555,6 +555,21 @@ nav.scrolled .socials a:nth-child(2){
   transform:scale(1.05) rotate(1deg);
 }
 
+  /* VIDEA */
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.video-grid video{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:20px;
+}
+
 /* OSLAVY */
 
 .parties{
@@ -1099,6 +1114,9 @@ footer{
   .garden-grid img{
     transform:none !important;
   }
+  .video-grid{
+  grid-template-columns:1fr;
+}
 
 }
 
@@ -1403,7 +1421,7 @@ footer{
   Pojďte oslavovat
 </h3>
 
-<div class="salon-grid reveal" style="margin-top:40px;">
+<div class="video-grid reveal" style="margin-top:40px;">
 
   <video controls playsinline>
     <source src="unicorn.mp4" type="video/mp4">

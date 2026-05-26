@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.detsky-svet-dzungle.cz/sitemap.xml

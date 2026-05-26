@@ -869,6 +869,26 @@ footer{
     transform:translateY(40px);
   }
 }
+  .footer-content{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+  text-align:center;
+  font-size:.95rem;
+  line-height:1.6;
+}
+
+.footer-credit a{
+  color:var(--yellow);
+  text-decoration:none;
+  font-weight:700;
+  transition:.3s;
+}
+
+.footer-credit a:hover{
+  color:white;
+}
 
 /* MOBILE */
 
@@ -1612,8 +1632,33 @@ footer{
   </div>
 
   <footer>
-    © Dětský svět Džungle
-  </footer>
+  <div class="footer-content">
+
+    <p>
+      © Dětský svět Džungle
+    </p>
+
+    <p>
+      ALUMI s.r.o. | sídliště Vajgar 649, 377 01 Jindřichův Hradec
+    </p>
+
+    <p>
+      IČO: 28086937
+    </p>
+
+    <p>
+      Odpovědná osoba: Daniela Drsová
+    </p>
+
+    <p class="footer-credit">
+      Designed by
+      <a href="https://www.zajait.cz" target="_blank" rel="noopener">
+        ZajaIT
+      </a>
+    </p>
+
+  </div>
+</footer>
 
 </section>
 

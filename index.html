@@ -1666,6 +1666,10 @@ footer{
 
 <script>
 
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
+
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
